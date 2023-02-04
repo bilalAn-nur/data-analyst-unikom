@@ -1,18 +1,17 @@
 import { useTheme } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
-import { tokens } from "../theme";
-import { mockBarData as datas } from "../data/mockData";
+import { tokens } from "../../theme";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
-const BarChart = ({ isDashboard = false }) => {
+const Gen1 = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/hololive/barchart").then((res) => setData(res.data));
+    axios.get("/api/hololive/gen1").then((res) => setData(res.data));
   }, []);
 
   return (
@@ -137,4 +136,4 @@ const BarChart = ({ isDashboard = false }) => {
   );
 };
 
-export default BarChart;
+export default Gen1;

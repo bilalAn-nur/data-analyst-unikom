@@ -2,10 +2,20 @@ import { ResponsivePie } from "@nivo/pie";
 import { tokens } from "../theme";
 import { useTheme } from "@mui/material";
 import { mockPieData as data } from "../data/mockData";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 
 const PieChart = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios.get("/api/superchat").then((res) => setData(res.data));
+  }, []);
+
+  console.log(data);
   return (
     <ResponsivePie
       data={data}
@@ -36,12 +46,21 @@ const PieChart = () => {
             fill: colors.grey[100],
           },
         },
+        tooltip: {
+          container: {
+            background: "#ffffff",
+            color: "#000000",
+          },
+        },
       }}
+      enableArcLabels={data.nameEnglish}
       margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
       innerRadius={0.5}
       padAngle={0.7}
       cornerRadius={3}
       activeOuterRadiusOffset={8}
+      colors={{ scheme: "category10" }}
+      borderWidth={1}
       borderColor={{
         from: "color",
         modifiers: [["darker", 0.2]],
@@ -50,56 +69,20 @@ const PieChart = () => {
       arcLinkLabelsTextColor={colors.grey[100]}
       arcLinkLabelsThickness={2}
       arcLinkLabelsColor={{ from: "color" }}
-      enableArcLabels={false}
-      arcLabelsRadiusOffset={0.4}
-      arcLabelsSkipAngle={7}
-      arcLabelsTextColor={{
-        from: "color",
-        modifiers: [["darker", 2]],
-      }}
-      defs={[
-        {
-          id: "dots",
-          type: "patternDots",
-          background: "inherit",
-          color: "rgba(255, 255, 255, 0.3)",
-          size: 4,
-          padding: 1,
-          stagger: true,
-        },
-        {
-          id: "lines",
-          type: "patternLines",
-          background: "inherit",
-          color: "rgba(255, 255, 255, 0.3)",
-          rotation: -45,
-          lineWidth: 6,
-          spacing: 10,
-        },
-      ]}
+      arcLabelsSkipAngle={10}
+      arcLabelsTextColor="#ffffff"
       legends={[
         {
-          anchor: "bottom",
-          direction: "row",
+          anchor: "right",
+          direction: "column",
           justify: false,
           translateX: 0,
-          translateY: 56,
-          itemsSpacing: 0,
+          translateY: 0,
           itemWidth: 100,
-          itemHeight: 18,
-          itemTextColor: "#999",
+          itemHeight: 20,
+          itemsSpacing: 0,
+          symbolSize: 20,
           itemDirection: "left-to-right",
-          itemOpacity: 1,
-          symbolSize: 18,
-          symbolShape: "circle",
-          effects: [
-            {
-              on: "hover",
-              style: {
-                itemTextColor: "#000",
-              },
-            },
-          ],
         },
       ]}
     />
