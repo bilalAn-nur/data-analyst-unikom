@@ -17,8 +17,8 @@ const Contacts = () => {
   }, []);
 
   const columns = [
-    { field: "channelId", headerName: "ID" },
-    { field: "name", headerName: "Nama Channel", flex: 2 },
+    { field: "channelId", headerName: "Link", flex: 1},
+    { field: "name", headerName: "Channel", flex: 1 },
     // { field: "englishName", headerName: "Nama ", flex: 1, cellClassName: "name-column-cell"},
     {
       field: "affiliation",
@@ -27,12 +27,11 @@ const Contacts = () => {
       align: "left",
     },
     { field: "group", headerName: "Grup", flex: 1 },
-    { field: "subscriptionCount", headerName: "Jumlah Subscriber", flex: 1 },
-    { field: "videoCount", headerName: "Address", flex: 1 },
+    { field: "subscriptionCount", headerName: "Subscriber", flex: 1 },
+    { field: "videoCount", headerName: "Video", flex: 1 },
     {
       field: "photo",
-      headerName: "Gambar",
-      flex: 1,
+      headerName: "Profile",
       renderCell: (params) => <Avatar src={params.row.photo} />,
       sortable: false,
     },
@@ -41,8 +40,8 @@ const Contacts = () => {
   return (
     <Box m="20px">
       <Header
-        title="CONTACTS"
-        subtitle="List of Contacts for Future Reference"
+        title="V-TUBER"
+        subtitle="List V-Tuber"
       />
       <Box
         m="40px 0 0 0"
