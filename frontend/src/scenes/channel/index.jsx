@@ -6,7 +6,7 @@ import { useTheme } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const Contacts = () => {
+const Channel = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -86,4 +86,4 @@ const Contacts = () => {
   );
 };
 
-export default Contacts;
+export default Channel;
