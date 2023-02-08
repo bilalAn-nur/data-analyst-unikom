@@ -126,6 +126,34 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
+              title="Bar Chart Stream"
+              to="/barstream"
+              icon={<BarChartOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Bar Chart Sub Per Group"
+              to="/barsubspergroup"
+              icon={<BarChartOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Live Chat Intensity"
+              to="/barlivechat"
+              icon={<BarChartOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Ban Events"
+              to="/barbanevent"
+              icon={<BarChartOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
               title="Pie Chart"
               to="/pie"
               icon={<PieChartOutlinedIcon />}

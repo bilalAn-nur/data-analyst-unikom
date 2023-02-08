@@ -5,6 +5,8 @@ import { tokens } from "../theme";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
+// import { mockGeographyData as data } from "../data/mockData";
+
 const GeographyChart = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);

@@ -59,6 +59,7 @@ for item in chat_counts:
     temp["valuechat"] = chat_counts[item]
     jumlahchat.append(temp)
 
+
 ##########################################
 jumlahAgensiVtuber = {}
 
