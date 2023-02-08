@@ -1,17 +1,17 @@
 import { useTheme } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
-import { tokens } from "../../theme";
+import { tokens } from "../theme";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
-const Gen1 = ({ isDashboard = false }) => {
+const BarChartLoro = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/hololive/gen1").then((res) => setData(res.data));
+    axios.get("/api/hololive/barchartloro").then((res) => setData(res.data));
   }, []);
 
   return (
@@ -52,13 +52,14 @@ const Gen1 = ({ isDashboard = false }) => {
           },
         },
       }}
-      keys={["subscriptionCount"]}
+      keys={["videoCount"]}
       indexBy="englishName"
-      margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+      margin={{ top: 50, right: 130, bottom: 200, left: 60 }}
       padding={0.3}
       valueScale={{ type: "linear" }}
       indexScale={{ type: "band", round: true }}
       colors={{ scheme: "nivo" }}
+      colorBy="indexValue"
       defs={[
         {
           id: "dots",
@@ -89,17 +90,10 @@ const Gen1 = ({ isDashboard = false }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
+        tickRotation: 90,
         legend: isDashboard ? undefined : "Nama Talent", // changed
         legendPosition: "middle",
-        legendOffset: 32,
-      }}
-      axisLeft={{
-        tickSize: 5,
-        tickPadding: 5,
-        tickRotation: 0,
-        legend: isDashboard ? undefined : "Subscriber", // changed
-        legendPosition: "middle",
-        legendOffset: 9,
+        legendOffset: 150,
       }}
       enableLabel={false}
       labelSkipWidth={12}
@@ -136,4 +130,4 @@ const Gen1 = ({ isDashboard = false }) => {
   );
 };
 
-export default Gen1;
+export default BarChartLoro;

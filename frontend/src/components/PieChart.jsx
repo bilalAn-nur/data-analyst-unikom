@@ -1,7 +1,6 @@
 import { ResponsivePie } from "@nivo/pie";
 import { tokens } from "../theme";
 import { useTheme } from "@mui/material";
-import { mockPieData as data } from "../data/mockData";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
@@ -12,10 +11,8 @@ const PieChart = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/superchat").then((res) => setData(res.data));
+    axios.get("/api/agensi").then((res) => setData(res.data));
   }, []);
-
-  console.log(data);
   return (
     <ResponsivePie
       data={data}

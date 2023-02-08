@@ -1,7 +1,6 @@
 import { useTheme } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
-import { mockBarData as datas } from "../data/mockData";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
@@ -55,11 +54,12 @@ const BarChart = ({ isDashboard = false }) => {
       }}
       keys={["subscriptionCount"]}
       indexBy="englishName"
-      margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+      margin={{ top: 50, right: 130, bottom: 200, left: 60 }}
       padding={0.3}
       valueScale={{ type: "linear" }}
       indexScale={{ type: "band", round: true }}
       colors={{ scheme: "nivo" }}
+      colorBy="indexValue"
       defs={[
         {
           id: "dots",
@@ -90,17 +90,10 @@ const BarChart = ({ isDashboard = false }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
+        tickRotation: 90,
         legend: isDashboard ? undefined : "Nama Talent", // changed
         legendPosition: "middle",
-        legendOffset: 32,
-      }}
-      axisLeft={{
-        tickSize: 5,
-        tickPadding: 5,
-        tickRotation: 0,
-        legend: isDashboard ? undefined : "Subscriber", // changed
-        legendPosition: "middle",
-        legendOffset: 9,
+        legendOffset: 150,
       }}
       enableLabel={false}
       labelSkipWidth={12}
