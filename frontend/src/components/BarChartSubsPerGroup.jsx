@@ -11,11 +11,9 @@ const BarChartSubsPerGroup = ({ isDashboard = false }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-<<<<<<< HEAD
-    axios.get("/api/hololive/gen0").then((res) => setData(res.data));
-=======
-    axios.get("/api/hololive/most_subscribers").then((res) => setData(res.data));
->>>>>>> 2e3e68e8de6e6f7890f764cd49e54cc7e8295c55
+    axios
+      .get("/api/hololive/most_subscribers")
+      .then((res) => setData(res.data));
   }, []);
   // useEffect(() => {
   //   axios.get("/api/hololive/gen1").then((res) => setData(res.data1));
