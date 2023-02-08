@@ -4,7 +4,7 @@ import BarChartBanEvent from "../../components/BarChartBanEvent";
 const Bar = () => {
   return (
     <Box m="20px">
-      <Header title="Bar Chart" subtitle="Ban Events" />
+      <Header title="Ban Chats" subtitle="Ban Events" />
       <Box height="60vh">
         <BarChartBanEvent />
       </Box>

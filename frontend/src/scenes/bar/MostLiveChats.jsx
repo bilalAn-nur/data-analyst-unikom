@@ -4,7 +4,7 @@ import BarChartLiveChart from "../../components/BarChartLiveChat";
 const MostLiveChats = () => {
   return (
     <Box m="20px">
-      <Header title="Most Chat" subtitle="Live Chat Intensity" />
+      <Header title="Most Live Chats" subtitle="Live Chat Intensity" />
       <Box height="60vh">
         <BarChartLiveChart />
       </Box>

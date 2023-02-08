@@ -4,15 +4,9 @@ import { Routes, Route } from "react-router-dom";
 import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
 import Dashboard from "./scenes/dashboard";
-<<<<<<< HEAD
 import MostActiveChannels from "./scenes/bar/MostActiveChannels";
 import Channels from "./scenes/channel";
 import MostSubscribers from "./scenes/bar/MostSubscribers";
-=======
-import Channels from "./scenes/channel";
-import MostSubscribers from "./scenes/bar/MostSubscribers";
-import MostActiveChannels from "./scenes/bar/MostActiveChannels";
->>>>>>> 2e3e68e8de6e6f7890f764cd49e54cc7e8295c55
 import BarStream from "./scenes/bar/barchartstream";
 import BarSubsPerGroup from "./scenes/bar/SubsGroup";
 import MostLiveChats from "./scenes/bar/MostLiveChats";
@@ -45,14 +39,6 @@ function App() {
               <Route path="/barbanevent" element={<BarBanEvent />} />
               <Route path="/pie" element={<Pie />} />
               <Route path="/geography" element={<Geography />} />
-<<<<<<< HEAD
-              <Route path="/barloro" element={<MostActiveChannels />} />
-              <Route path="/barstream" element={<BarStream />} />
-              <Route path="/barsubspergroup" element={<BarSubsPerGroup />} />
-              <Route path="/barlivechat" element={<BarLiveChat />} />
-              <Route path="/barbanevent" element={<BarBanEvent />} />
-=======
->>>>>>> 2e3e68e8de6e6f7890f764cd49e54cc7e8295c55
             </Routes>
           </main>
         </div>
