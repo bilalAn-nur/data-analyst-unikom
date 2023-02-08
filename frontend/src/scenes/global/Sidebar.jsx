@@ -133,37 +133,21 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
-                title="Bar Chart Sub Per Group"
-                to="/subs_group"
-                icon={<BarChartOutlinedIcon />}
-                selected={selected}
-                setSelected={setSelected}
-              />
-            <Item
-              title="Bar Chart Stream"
-              to="/barstream"
-              icon={<BarChartOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-            
-            
-            <Item
-              title="Ban Events"
+              title="Ban Chats"
               to="/barbanevent"
               icon={<BarChartOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Pie Chart"
+              title="V-Tuber Group"
               to="/pie"
               icon={<PieChartOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Geography Chart"
+              title="Geography Superchat"
               to="/geography"
               icon={<MapOutlinedIcon />}
               selected={selected}

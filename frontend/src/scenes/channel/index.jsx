@@ -22,7 +22,7 @@ const Channel = () => {
     // { field: "englishName", headerName: "Nama ", flex: 1, cellClassName: "name-column-cell"},
     {
       field: "affiliation",
-      headerName: "Agensi",
+      headerName: "Agency",
       headerAlign: "left",
       align: "left",
     },
@@ -41,7 +41,7 @@ const Channel = () => {
     <Box m="20px">
       <Header
         title="V-TUBER"
-        subtitle="List V-Tuber"
+        subtitle="List V-Tuber Channels"
       />
       <Box
         m="40px 0 0 0"

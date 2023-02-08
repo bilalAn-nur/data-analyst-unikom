@@ -5,7 +5,7 @@ import MostActiveChannel from "../../components/MostActiveChannel";
 const MostActiveChannels = () => {
   return (
     <Box m="20px">
-      <Header title="Most Active Channels" subtitle="Videos" />
+      <Header title="Most Active Channels" subtitle="Videos Upload" />
       <Box height="60vh">
         <MostActiveChannel />
       </Box>

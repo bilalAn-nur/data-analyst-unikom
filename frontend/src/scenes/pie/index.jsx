@@ -5,7 +5,7 @@ import PieChart from "../../components/PieChart";
 const Pie = () => {
   return (
     <Box m="20px">
-      <Header title="Pie Chart" subtitle="Simple Pie Chart" />
+      <Header title="V-Tuber Group" subtitle="V-Tuber Group by Agency" />
       <Box height="75vh">
         <PieChart />
       </Box>
