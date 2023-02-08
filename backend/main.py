@@ -9,23 +9,53 @@ app = FastAPI()
 
 jsondataChannel = open('../data/channels.json', encoding="utf8")
 channel = json.load(jsondataChannel)
-
 jsondataSuperchat = open('../data/superchat_stats.json', encoding="utf8")
 superchat = json.load(jsondataSuperchat)
+jsondataChatStats = open('../data/chat_stats.json', encoding="utf8")
+chat_stats = json.load(jsondataChatStats)
+
 
 #untuk mengfilter hanya hololive yang tampil
 def hololiveFilter(talent):
     return talent['affiliation'] == "Hololive"
+    
 hololiveTalent = list(filter(hololiveFilter, channel))
 
 # untuk mengurutkan jumlah subscriber terbanyak
 sortedsubs = sorted(hololiveTalent, key=lambda x: x['subscriptionCount'], reverse=True)
+
+sorted_video_count = sorted(hololiveTalent, key=lambda x: x['videoCount'], reverse=True)
+
+# sorted_livechart
 
 #hapus channel hololive
 for i, item in enumerate(sortedsubs):
     if item["channelId"] == "UCJFZiqLMntJufDCHc6bQixg":
         del sortedsubs[i]
 
+
+chat_counts = {}
+def add_chat(data):
+    channelId = data["channelId"]
+    chats = data["chats"]
+    if channelId in chat_counts:
+        chat_counts[channelId] += chats
+    else:
+        chat_counts[channelId] = chats
+
+for data in chat_stats:
+    add_chat(data)
+
+jumlahchat = []
+for item in chat_counts:
+    temp = {}
+    temp["channelId"] = item
+    temp["valuechat"] = chat_counts[item]
+    jumlahchat.append(temp)
+
+
+
+##########################################
 jumlahAgensiVtuber = {}
 
 for vtuber in channel:
@@ -61,13 +91,43 @@ persenbar.append({"id": "Nijisanji", "value": nijisanji})
 persenbar.append({"id": "Twitch Independents", "value": TwitchIndependents})
 persenbar.append({"id": "Other", "value": Other_persen})
 
+#############################################################
+
+jumlahmatauang = {}
+
+for matauang in superchat:
+    curency = matauang["mostFrequentCurrency"]
+    if curency in jumlahmatauang:
+        jumlahmatauang[curency] += 1
+    else:
+        jumlahmatauang[curency] = 1
+
+colors = [
+        "#ff0000","#00d4ff", "#16ff00", "#ffd600", "#ff7c00",
+        "#ff00db" ,"#267fb1", "#2b7a1d" , "#ffffff","#A52A2A",
+        "#84cd22", "#786209" , "#073739" , "#8ce74e" , "#FF8C00",
+        "#383c04", "#BDB76B", "#8FBC8F", "#2F4F4F", "#008000",
+        "#4B0082", "#7CFC00", "#20B2AA", "#00FF00", "#7B68EE",
+        "#FF4500", "#DB7093", "#DDA0DD"
+    ]
+
+superchatcurency = []
+c = 0
+for currency in jumlahmatauang:
+    tempuang = {}
+    tempuang["id"] = currency
+    tempuang["value"] = jumlahmatauang[currency]
+    tempuang["color"] = colors[c]
+    superchatcurency.append(tempuang)
+    c = c + 1
+
 
 
 @app.get("/api")
 async def read_root():
     return channel
 
-@app.get("/api/superchat")
+@app.get("/api/agensi")
 async def read_root():
     return persenbar
 #
@@ -77,7 +137,21 @@ async def read_root():
 
 @app.get("/api/hololive/barchart")
 async def read_root():
-    return sortedsubs[:10]
+    return sortedsubs
+
+@app.get("/api/hololive/barchartloro")
+async def read_root():
+    return sorted_video_count
+
+
+@app.get("/api/hololive/barcharttelu")
+async def read_root():
+    return jumlahchat
+
+
+@app.get("/api/map")
+async def read_root():
+    return superchatcurency
 
 
 #======================================================================

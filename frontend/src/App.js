@@ -5,7 +5,8 @@ import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
 import Dashboard from "./scenes/dashboard";
 import Channel from "./scenes/channel";
-import Bar from "./scenes/bar";
+import Bar from "./scenes/bar/";
+import Barloro from "./scenes/bar/barcharloro";
 import Pie from "./scenes/pie";
 import Geography from "./scenes/geography";
 import Calendar from "./scenes/calendar";
@@ -28,6 +29,7 @@ function App() {
               <Route path="/pie" element={<Pie />} />
               <Route path="/geography" element={<Geography />} />
               <Route path="/calendar" element={<Calendar />} />
+              <Route path="/barloro" element={<Barloro />} />
             </Routes>
           </main>
         </div>
