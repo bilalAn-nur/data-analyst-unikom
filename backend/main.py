@@ -2,6 +2,7 @@ from typing import List
 from fastapi import FastAPI
 from pydantic import BaseModel
 import json
+import pandas as pd
 
 
 app = FastAPI()
@@ -53,6 +54,15 @@ for item in chat_counts:
     temp["channelId"] = item
     temp["valuechat"] = chat_counts[item]
     jumlahchat.append(temp)
+
+channelvidcout = []
+for item1 in hololiveTalent:
+    for item2 in jumlahchat:
+        if item1['channelId'] == item2['channelId']:
+            item2.update(item1)
+            channelvidcout.append(item2)
+
+sortedchat = sorted(channelvidcout, key=lambda x: x['valuechat'], reverse=True)
 
 
 ##########################################
@@ -144,9 +154,9 @@ async def read_root():
     return sorted_video_count
 
 
-@app.get("/api/hololive/barcharttelu")
+@app.get("/api/hololive/chat")
 async def read_root():
-    return jumlahchat
+    return sortedchat
 
 
 @app.get("/api/map")
