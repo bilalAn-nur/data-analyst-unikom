@@ -7,6 +7,10 @@ import Dashboard from "./scenes/dashboard";
 import Channel from "./scenes/channel";
 import Bar from "./scenes/bar/";
 import Barloro from "./scenes/bar/barcharloro";
+import BarStream from "./scenes/bar/barchartstream";
+import BarSubsPerGroup from "./scenes/bar/barchartsubspergroup";
+import BarLiveChat from "./scenes/bar/barchartlivechat";
+import BarBanEvent from "./scenes/bar/barchartbanevent";
 import Pie from "./scenes/pie";
 import Geography from "./scenes/geography";
 
@@ -28,6 +32,10 @@ function App() {
               <Route path="/pie" element={<Pie />} />
               <Route path="/geography" element={<Geography />} />
               <Route path="/barloro" element={<Barloro />} />
+              <Route path="/barstream" element={<BarStream />} />
+              <Route path="/barsubspergroup" element={<BarSubsPerGroup />} />
+              <Route path="/barlivechat" element={<BarLiveChat />} />
+              <Route path="/barbanevent" element={<BarBanEvent />} />
             </Routes>
           </main>
         </div>

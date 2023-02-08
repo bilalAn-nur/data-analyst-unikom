@@ -4,7 +4,7 @@ import { tokens } from "../theme";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
-const BarChartLoro = ({ isDashboard = false }) => {
+const BarChartLiveChat = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -130,4 +130,4 @@ const BarChartLoro = ({ isDashboard = false }) => {
   );
 };
 
-export default BarChartLoro;
+export default BarChartLiveChat;
