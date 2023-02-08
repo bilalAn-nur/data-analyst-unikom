@@ -8,8 +8,8 @@ import Channels from "./scenes/channel";
 import MostSubscribers from "./scenes/bar/MostSubscribers";
 import MostActiveChannels from "./scenes/bar/MostActiveChannels";
 import BarStream from "./scenes/bar/barchartstream";
-import BarSubsPerGroup from "./scenes/bar/barchartsubspergroup";
-import BarLiveChat from "./scenes/bar/barchartlivechat";
+import BarSubsPerGroup from "./scenes/bar/SubsGroup";
+import MostLiveChats from "./scenes/bar/MostLiveChats";
 import BarBanEvent from "./scenes/bar/barchartbanevent";
 import Pie from "./scenes/pie";
 import Geography from "./scenes/geography";
@@ -33,13 +33,12 @@ function App() {
                 path="/most_active_channels"
                 element={<MostActiveChannels />}
               />
+              <Route path="/most_live_chat" element={<MostLiveChats />} />
+              <Route path="/barstream" element={<BarStream />} />
+              <Route path="/subs_group" element={<BarSubsPerGroup />} />
+              <Route path="/barbanevent" element={<BarBanEvent />} />
               <Route path="/pie" element={<Pie />} />
               <Route path="/geography" element={<Geography />} />
-              <Route path="/barloro" element={<MostActiveChannels />} />
-              <Route path="/barstream" element={<BarStream />} />
-              <Route path="/barsubspergroup" element={<BarSubsPerGroup />} />
-              <Route path="/barlivechat" element={<BarLiveChat />} />
-              <Route path="/barbanevent" element={<BarBanEvent />} />
             </Routes>
           </main>
         </div>
