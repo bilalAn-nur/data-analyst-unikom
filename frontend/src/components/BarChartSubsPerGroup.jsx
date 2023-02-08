@@ -11,7 +11,11 @@ const BarChartSubsPerGroup = ({ isDashboard = false }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+<<<<<<< HEAD
     axios.get("/api/hololive/gen0").then((res) => setData(res.data));
+=======
+    axios.get("/api/hololive/most_subscribers").then((res) => setData(res.data));
+>>>>>>> 2e3e68e8de6e6f7890f764cd49e54cc7e8295c55
   }, []);
   // useEffect(() => {
   //   axios.get("/api/hololive/gen1").then((res) => setData(res.data1));
@@ -92,7 +96,6 @@ const BarChartSubsPerGroup = ({ isDashboard = false }) => {
       axisBottom={{
         tickSize: 5,
         tickPadding: 5,
-        tickRotation: 0,
         tickRotation: 90,
         legend: isDashboard ? undefined : "Nama Talent", // changed
         legendPosition: "middle",

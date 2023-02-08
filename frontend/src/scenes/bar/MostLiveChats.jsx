@@ -1,10 +1,10 @@
 import { Box } from "@mui/material";
 import Header from "../../components/Header";
 import BarChartLiveChart from "../../components/BarChartLiveChat";
-const Bar = () => {
+const MostLiveChats = () => {
   return (
     <Box m="20px">
-      <Header title="Bar Chart" subtitle="Live Chat Intensity" />
+      <Header title="Most Chat" subtitle="Live Chat Intensity" />
       <Box height="60vh">
         <BarChartLiveChart />
       </Box>
@@ -12,4 +12,4 @@ const Bar = () => {
   );
 };
 
-export default Bar;
+export default MostLiveChats;
