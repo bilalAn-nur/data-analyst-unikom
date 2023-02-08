@@ -24,11 +24,9 @@ def hololiveFilter(talent):
 hololiveTalent = list(filter(hololiveFilter, channel))
 
 # untuk mengurutkan jumlah subscriber terbanyak
-sortedsubs = sorted(
-    hololiveTalent, key=lambda x: x['subscriptionCount'], reverse=True)
+sortedsubs = sorted(hololiveTalent, key=lambda x: x['subscriptionCount'], reverse=True)
 
-sorted_video_count = sorted(
-    hololiveTalent, key=lambda x: x['videoCount'], reverse=True)
+sorted_video_count = sorted(hololiveTalent, key=lambda x: x['videoCount'], reverse=True)
 
 # sorted_livechart
 
@@ -38,9 +36,8 @@ for i, item in enumerate(sortedsubs):
         del sortedsubs[i]
 
 
+# =============================================
 chat_counts = {}
-
-
 def add_chat(data):
     channelId = data["channelId"]
     chats = data["chats"]
@@ -48,8 +45,6 @@ def add_chat(data):
         chat_counts[channelId] += chats
     else:
         chat_counts[channelId] = chats
-
-
 for data in chat_stats:
     add_chat(data)
 
@@ -66,9 +61,34 @@ for item1 in hololiveTalent:
         if item1['channelId'] == item2['channelId']:
             item2.update(item1)
             channelvidcout.append(item2)
-
 sortedchat = sorted(channelvidcout, key=lambda x: x['valuechat'], reverse=True)
 
+################################################
+ban_counts = {}
+def add_ban(databan):
+    channelId = databan["channelId"]
+    banned = databan["bannedChatters"]
+    if channelId in ban_counts:
+        ban_counts[channelId] += banned
+    else:
+        ban_counts[channelId] = banned
+for data in chat_stats:
+    add_ban(data)
+
+jumlahban = []
+for item in ban_counts:
+    temp = {}
+    temp["channelId"] = item
+    temp["valueban"] = ban_counts[item]
+    jumlahban.append(temp)
+
+channelvidcout1 = []
+for item1 in hololiveTalent:
+    for item2 in jumlahban:
+        if item1['channelId'] == item2['channelId']:
+            item2.update(item1)
+            channelvidcout1.append(item2)
+sortedban = sorted(channelvidcout1, key=lambda x: x['valueban'], reverse=True)
 
 ##########################################
 jumlahAgensiVtuber = {}
@@ -150,6 +170,10 @@ async def read_root():
 async def read_root():
     return persenbar
 #
+@app.get("/api/chatstat")
+async def read_root():
+    return sortedban
+#
 
 
 @app.get("/api/hololive")
@@ -171,6 +195,10 @@ async def read_root():
 async def read_root():
     return sortedchat
 
+@app.get("/api/hololive/banchat")
+async def read_root():
+    return sortedban
+
 
 @app.get("/api/map")
 async def read_root():
@@ -181,165 +209,137 @@ async def read_root():
 # Generation 1
 def hololiveGen1(talent):
     return talent['affiliation'] == "Hololive" and talent['group'] == "1st Generation"
-
-
 Gen1 = list(filter(hololiveGen1, channel))
-
-
 @app.get("/api/hololive/gen1")
 async def read_root():
     return Gen1,
 
 # Generation 1
-
-
 def hololiveGen1(talent):
     return talent['affiliation'] == "Hololive" and talent['group'] == "1st Generation"
-
-
 Gen1 = list(filter(hololiveGen1, channel))
-
-
 @app.get("/api/hololive/gen1")
 async def read_root():
     return Gen1,
 
 # Generation 2
-
-
 def hololiveGen2(talent):
     return talent['affiliation'] == "Hololive" and talent['group'] == "2nd Generation"
-
-
 Gen2 = list(filter(hololiveGen2, channel))
-
-
 @app.get("/api/hololive/gen2")
 async def read_root():
     return Gen2
 
 # Generation 3
-
-
 def hololiveGen3(talent):
     return talent['affiliation'] == "Hololive" and talent['group'] == "3rd Generation"
-
-
 Gen3 = list(filter(hololiveGen3, channel))
-
-
 @app.get("/api/hololive/gen3")
 async def read_root():
     return Gen3
 
 # Generation 4
-
-
 def hololiveGen4(talent):
     return talent['affiliation'] == "Hololive" and talent['group'] == "4th Generation"
-
-
 Gen4 = list(filter(hololiveGen4, channel))
-
-
 @app.get("/api/hololive/gen4")
 async def read_root():
     return Gen4
 
 # Generation 5
-
-
 def hololiveGen5(talent):
     return talent['affiliation'] == "Hololive" and talent['group'] == "5th Generation"
-
-
 Gen5 = list(filter(hololiveGen5, channel))
-
-
 @app.get("/api/hololive/gen5")
 async def read_root():
     return Gen5
 
 # Generation 6
-
-
 def hololiveGen6(talent):
     return talent['affiliation'] == "Hololive" and talent['group'] == "6th Generation (HoloX)"
-
-
 Gen6 = list(filter(hololiveGen6, channel))
-
-
 @app.get("/api/hololive/gen6")
 async def read_root():
     return Gen6
 
 # Indonesia Generation 1
-
-
 def hololiveIndonesiaGen1(talent):
     return talent['affiliation'] == "Hololive" and talent['group'] == "Indonesia 1st Gen"
-
-
 IndonesiaGen1 = list(filter(hololiveIndonesiaGen1, channel))
-
-
 @app.get("/api/hololive/indonesiagen1")
 async def read_root():
     return IndonesiaGen1
 
 # Indonesia Generation 2
-
-
-def hololiveIndonesiaGen1(talent):
+def hololiveIndonesiaGen2(talent):
     return talent['affiliation'] == "Hololive" and talent['group'] == "Indonesia 2nd Gen"
-
-
-IndonesiaGen1 = list(filter(hololiveIndonesiaGen1, channel))
-
-
-@app.get("/api/hololive/indonesiagen1")
+IndonesiaGen2 = list(filter(hololiveIndonesiaGen2, channel))
+@app.get("/api/hololive/indonesiagen2")
 async def read_root():
-    return IndonesiaGen1
+    return IndonesiaGen2
 
 # Indonesia Generation 3
-
-
-def hololiveIndonesiaGen1(talent):
+def hololiveIndonesiaGen3(talent):
     return talent['affiliation'] == "Hololive" and talent['group'] == "Indonesia 3th Gen"
-
-
-IndonesiaGen1 = list(filter(hololiveIndonesiaGen1, channel))
-
-
-@app.get("/api/hololive/indonesiagen1")
+IndonesiaGen3 = list(filter(hololiveIndonesiaGen3, channel))
+@app.get("/api/hololive/indonesiagen3")
 async def read_root():
-    return IndonesiaGen1
+    return IndonesiaGen3
 
 # English Generation 1
-
-
-def hololiveIndonesiaGen1(talent):
-    return talent['affiliation'] == "Hololive" and talent['group'] == "Indonesia 1st Gen"
-
-
-IndonesiaGen1 = list(filter(hololiveIndonesiaGen1, channel))
-
-
-@app.get("/api/hololive/indonesiagen1")
+def hololiveEnglishGen1(talent):
+    return talent['affiliation'] == "Hololive" and talent['group'] == "English (Myth)"
+ENGen1 = list(filter(hololiveEnglishGen1, channel))
+@app.get("/api/hololive/english1")
 async def read_root():
-    return IndonesiaGen1
+    return ENGen1
 
-# Indonesia Generation 2
-
-
-def hololiveIndonesiaGen1(talent):
-    return talent['affiliation'] == "Hololive" and talent['group'] == "Indonesia 1st Gen"
-
-
-IndonesiaGen1 = list(filter(hololiveIndonesiaGen1, channel))
-
-
-@app.get("/api/hololive/indonesiagen1")
+# English Generation 2
+def hololiveEnglishGen2(talent):
+    return talent['affiliation'] == "Hololive" and talent['group'] == "English (Council)"
+ENGen2 = list(filter(hololiveEnglishGen2, channel))
+@app.get("/api/hololive/english2")
 async def read_root():
-    return IndonesiaGen1
+    return ENGen2
+
+# Generation 0
+def Generation0(talent):
+    return talent['affiliation'] == "Hololive" and talent['group'] == "Generation 0"
+Gen0 = list(filter(Generation0, channel))
+@app.get("/api/hololive/gen0")
+async def read_root():
+    return Gen0
+
+# Gamer
+def Hologamer(talent):
+    return talent['affiliation'] == "Hololive" and talent['group'] == "GAMERS"
+gamer = list(filter(Hologamer, channel))
+@app.get("/api/hololive/gamers")
+async def read_root():
+    return gamer
+
+# Holostar Gen 1
+def HolostarGen1(talent):
+    return talent['affiliation'] == "Hololive" and talent['group'] == "Holostars 1st Gen"
+holostar1 = list(filter(HolostarGen1, channel))
+@app.get("/api/hololive/holostar1")
+async def read_root():
+    return holostar1
+
+# Holostar Gen 2
+def HolostarGen2(talent):
+    return talent['affiliation'] == "Hololive" and talent['group'] == "Holostars 2nd Gen"
+holostar2 = list(filter(HolostarGen2, channel))
+@app.get("/api/hololive/holostar2")
+async def read_root():
+    return holostar2
+
+# Holostar Gen 3
+def hololiveIndonesiaGen3(talent):
+    return talent['affiliation'] == "Hololive" and talent['group'] == "Holostars 3rd Gen"
+holostar3 = list(filter(hololiveIndonesiaGen3, channel))
+@app.get("/api/hololive/holostar3")
+async def read_root():
+    return holostar3
+
+

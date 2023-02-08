@@ -11,8 +11,11 @@ const BarChartSubsPerGroup = ({ isDashboard = false }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/hololive/barchartloro").then((res) => setData(res.data));
+    axios.get("/api/hololive/gen0").then((res) => setData(res.data));
   }, []);
+  // useEffect(() => {
+  //   axios.get("/api/hololive/gen1").then((res) => setData(res.data1));
+  // }, []);
 
   return (
     <ResponsiveBar
@@ -52,7 +55,7 @@ const BarChartSubsPerGroup = ({ isDashboard = false }) => {
           },
         },
       }}
-      keys={["videoCount"]}
+      keys={["subscriptionCount"]}
       indexBy="englishName"
       margin={{ top: 50, right: 130, bottom: 200, left: 60 }}
       padding={0.3}

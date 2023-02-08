@@ -11,7 +11,7 @@ const BarChartBanEvent = ({ isDashboard = false }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/hololive/barchartloro").then((res) => setData(res.data));
+    axios.get("/api/hololive/banchat").then((res) => setData(res.data));
   }, []);
 
   return (
@@ -52,7 +52,7 @@ const BarChartBanEvent = ({ isDashboard = false }) => {
           },
         },
       }}
-      keys={["videoCount"]}
+      keys={["valueban"]}
       indexBy="englishName"
       margin={{ top: 50, right: 130, bottom: 200, left: 60 }}
       padding={0.3}
