@@ -72,7 +72,7 @@ const Sidebar = () => {
                 ml="15px"
               >
                 <Typography variant="h3" color={colors.grey[100]}>
-                  ADMINIS
+                  DATA V-Tuber
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -95,11 +95,11 @@ const Sidebar = () => {
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Data
+              Information
             </Typography>
             <Item
-              title="Channel"
-              to="/channel"
+              title="Channels"
+              to="/channels"
               icon={<ContactsOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -109,18 +109,18 @@ const Sidebar = () => {
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Charts
+              Visual Analyst
             </Typography>
             <Item
-              title="Bar Chart"
-              to="/bar"
+              title="Most Subscribers"
+              to="/most_subscribers"
               icon={<BarChartOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Bar Chart Loro"
-              to="/barloro"
+              title="Most Active Channels"
+              to="/most_active_channels"
               icon={<BarChartOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}

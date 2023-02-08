@@ -4,14 +4,14 @@ import { tokens } from "../theme";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
-const BarChart = ({ isDashboard = false }) => {
+const MostActiveChannel = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/hololive/barchart").then((res) => setData(res.data));
+    axios.get("/api/hololive/most_active_channels").then((res) => setData(res.data));
   }, []);
 
   return (
@@ -52,7 +52,7 @@ const BarChart = ({ isDashboard = false }) => {
           },
         },
       }}
-      keys={["subscriptionCount"]}
+      keys={["videoCount"]}
       indexBy="englishName"
       margin={{ top: 50, right: 130, bottom: 200, left: 60 }}
       padding={0.3}
@@ -89,7 +89,6 @@ const BarChart = ({ isDashboard = false }) => {
       axisBottom={{
         tickSize: 5,
         tickPadding: 5,
-        tickRotation: 0,
         tickRotation: 90,
         legend: isDashboard ? undefined : "Nama Talent", // changed
         legendPosition: "middle",
@@ -130,4 +129,4 @@ const BarChart = ({ isDashboard = false }) => {
   );
 };
 
-export default BarChart;
+export default MostActiveChannel;
