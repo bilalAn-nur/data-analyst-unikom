@@ -34,6 +34,7 @@ for i, item in enumerate(sortedsubs):
         del sortedsubs[i]
 
 
+
 chat_counts = {}
 def add_chat(data):
     channelId = data["channelId"]
@@ -52,8 +53,6 @@ for item in chat_counts:
     temp["channelId"] = item
     temp["valuechat"] = chat_counts[item]
     jumlahchat.append(temp)
-
-
 
 ##########################################
 jumlahAgensiVtuber = {}
