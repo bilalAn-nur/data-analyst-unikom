@@ -4,9 +4,9 @@ import { Routes, Route } from "react-router-dom";
 import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
 import Dashboard from "./scenes/dashboard";
-import Channel from "./scenes/channel";
-import Bar from "./scenes/bar/";
-import Barloro from "./scenes/bar/barcharloro";
+import Channels from "./scenes/channel";
+import MostSubscribers from "./scenes/bar/MostSubscribers";
+import MostActiveChannels from "./scenes/bar/MostActiveChannels";
 import Pie from "./scenes/pie";
 import Geography from "./scenes/geography";
 
@@ -23,11 +23,14 @@ function App() {
             <Topbar />
             <Routes>
               <Route path="/" element={<Dashboard />} />
-              <Route path="/channel" element={<Channel />} />
-              <Route path="/bar" element={<Bar />} />
+              <Route path="/channels" element={<Channels />} />
+              <Route path="/most_subscribers" element={<MostSubscribers />} />
+              <Route
+                path="/most_active_channels"
+                element={<MostActiveChannels />}
+              />
               <Route path="/pie" element={<Pie />} />
               <Route path="/geography" element={<Geography />} />
-              <Route path="/barloro" element={<Barloro />} />
             </Routes>
           </main>
         </div>
